@@ -79,7 +79,7 @@ exports.mentoring = async (req, res, next) => {
   ]);
   const err = [];
   messages.forEach((element) => {
-    if (!element.success) {
+    if (element.error) {
       err.append({ user_id: element.message.user_id, err: element.error });
     }
   });
