@@ -108,3 +108,5 @@ dist
 
 #for vscode
 .vscode
+.eslintrc.json
+.prettierrc.json

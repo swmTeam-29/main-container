@@ -1,7 +1,7 @@
 module.exports = {
   keys: {
     kakaoWork: {
-      bot: '',
+      bot: process.env.KAKAO_BOT_KEY,
     },
   },
 };
