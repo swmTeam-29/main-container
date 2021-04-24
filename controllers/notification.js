@@ -1,12 +1,12 @@
 const libKakaoWork = require('../libs/kakaoWork');
-const mentroringMsg = require('../msgGenerator/mentoring.msg');
+const mentoringMsg = require('../msgGenerator/mentoring.msg');
 
 exports.mentoring = async (req, res, next) => {
   const data = req.body;
   const conversations = req.conversations;
   const messages = await Promise.all([
     conversations.map((conversation) => {
-      const msg = mentroringMsg.mentroringMsgGenerator(conversation.id, data);
+      const msg = mentoringMsg.mentoringMsgGenerator(conversation.id, data);
 
       return libKakaoWork.sendMessage(msg);
     }),

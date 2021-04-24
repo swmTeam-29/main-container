@@ -1,4 +1,4 @@
-exports.mentroringMsgGenerator = (conversationId, data) => {
+exports.mentoringMsgGenerator = (conversationId, data) => {
   return {
     conversationId: conversationId,
     text: '멘토링 알림',
