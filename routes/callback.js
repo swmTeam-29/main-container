@@ -3,7 +3,7 @@ const libKakaoWork = require('../libs/kakaoWork');
 
 router.post('/', async (req, res, next) => {
   //res.status(200).send({ msg: "test" });
-  const { message, actions, action_time, value } = req.body; // 설문조사 결과 확인 (2)
+  const { message, actions, action_time, value } = req.body;
 
   switch (value) {
     case 'keyword_setting_results':
@@ -27,20 +27,10 @@ router.post('/', async (req, res, next) => {
           },
           {
             type: 'description',
-            term: '평점',
+            term: '키워드',
             content: {
               type: 'text',
               text: actions.keyword_input,
-              markdown: false,
-            },
-            accent: true,
-          },
-          {
-            type: 'description',
-            term: '시간',
-            content: {
-              type: 'text',
-              text: action_time,
               markdown: false,
             },
             accent: true,
