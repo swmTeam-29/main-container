@@ -65,6 +65,9 @@ exports.mentoringMsgGenerator = (conversationId, data) => {
         type: 'button',
         text: '신청하기',
         style: 'primary',
+        action_type: 'submit_action',
+        action_name: 'applicantMentoring',
+        value: data.link,
       },
     ],
   };

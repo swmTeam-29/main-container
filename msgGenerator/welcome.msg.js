@@ -19,7 +19,7 @@ exports.welcomeMsgGenerator = (conversationId) => {
         text: '키워드 알림 설정',
         style: 'default',
         action_type: 'call_modal',
-        value: 'keyword_setting',
+        action_name: 'keyword_setting',
       },
     ],
   };
