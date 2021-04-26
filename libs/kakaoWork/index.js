@@ -1,10 +1,8 @@
-const Config = require('../../configs/app/development.js');
-
 const axios = require('axios');
 const kakaoInstance = axios.create({
   baseURL: 'https://api.kakaowork.com',
   headers: {
-    Authorization: `Bearer ${Config.keys.kakaoWork.bot}`,
+    Authorization: `Bearer ${process.env.KAKAO_BOT_KEY}`,
   },
 });
 
