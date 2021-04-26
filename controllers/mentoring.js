@@ -17,7 +17,7 @@ exports.applicant = (data) => {
     },
     body: {
       userId,
-      tyep: 'applicant',
+      type: 'applicant',
       link,
     },
     json: true, //json으로 보낼경우 true로 해주어야 header값이 json으로 설정됩니다.
