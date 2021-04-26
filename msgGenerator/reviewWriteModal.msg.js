@@ -1,7 +1,6 @@
 //data: mento, subject, 
-exports.reviewWriteModalGenerator = (conversationId, data) => {
+exports.reviewWriteModalGenerator = (data) => {
   return {
-    conversationId: conversationId,
     title: '멘토링 한줄평 작성',
     accept: '확인',
     decline: '취소',

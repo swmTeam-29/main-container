@@ -1,43 +1,34 @@
 const router = require('express').Router();
 const libKakaoWork = require('../libs/kakaoWork');
+const mentoring = require('../controllers/mentoring');
+const keywordComplete = require('../msgGenerator/keywordComplete.msg');
 
 router.post('/', async (req, res, next) => {
   //res.status(200).send({ msg: "test" });
-  const { message, actions, action_time, value } = req.body;
+  const {
+    message,
+    actions,
+    react_user_id,
+    action_name,
+    action_time,
+    value,
+  } = req.body;
 
-  switch (value) {
+  switch (action_name) {
     case 'keyword_setting_results':
       // 키워드와 채팅방 고유 id DB에 저장
       console.log(message.conversation_id + ': ' + actions.keyword_input);
-
+      const msg = keywordComplete(message, actions);
       // 키워드 알림 설정 완료 시 전송 메시지
-      await libKakaoWork.sendMessage({
-        conversationId: message.conversation_id,
-        text: '키워드 알림 설정이 완료되었습니다',
-        blocks: [
-          {
-            type: 'text',
-            text: '키워드 알림 설정이 완료되었습니다!',
-            markdown: true,
-          },
-          {
-            type: 'text',
-            text: '*키워드 설정 내역*',
-            markdown: true,
-          },
-          {
-            type: 'description',
-            term: '키워드',
-            content: {
-              type: 'text',
-              text: actions.keyword_input,
-              markdown: false,
-            },
-            accent: true,
-          },
-        ],
-      });
+      await libKakaoWork.sendMessage(msg);
       break;
+      
+    case 'applicantMentoring':
+      mentoring.applicant(req.body);
+      break;
+
+    case 
+
     default:
   }
 

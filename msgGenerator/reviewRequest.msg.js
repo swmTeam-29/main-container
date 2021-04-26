@@ -1,12 +1,12 @@
 //data: mento, subject, 
-exports.reviewSuccessMsgGenerator = (conversationId, data) => {
+exports.reviewRequestMsgGenerator = (conversationId, data) => {
   return {
     conversationId: conversationId,
-    text: '멘토링 한줄평 등록 완료',
+    text: '멘토링 한줄평 권유',
     blocks: [
       {
         type: 'header',
-        text: '멘토링 한줄평 등록 완료',
+        text: '오늘 참여했던 멘토링 어땠나요?',
         style: 'blue',
       },
       {
@@ -16,15 +16,16 @@ exports.reviewSuccessMsgGenerator = (conversationId, data) => {
       },
       {
         type: 'text',
-        text: `${data.subject} 멘토링에 대한`,
+        text: `${data.subject} 멘토링 어땠나요?`,
         markdown: false,
       },
       {
-        type: 'text',
-        text: '한줄평이 등록되었습니다.',
+        type: 'button',
+        text: '한줄평 쓰러가기',
         style: 'default',
+        action_type: 'call_modal',
+        action_name: 'review_request',
       },
     ],
   };
 };
-  
