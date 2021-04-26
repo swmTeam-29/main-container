@@ -26,7 +26,7 @@ exports.mentoringMsgGenerator = (conversationId, data) => {
         term: '접수기간',
         content: {
           type: 'text',
-          text: data.description[0].split(': ')[1],
+          text: data.period,
           markdown: false,
         },
         accent: true,
@@ -36,7 +36,7 @@ exports.mentoringMsgGenerator = (conversationId, data) => {
         term: '행사기간',
         content: {
           type: 'text',
-          text: data.description[1].split(': ')[1],
+          text: data.date,
           markdown: false,
         },
         accent: true,
@@ -46,7 +46,7 @@ exports.mentoringMsgGenerator = (conversationId, data) => {
         term: '신청인원',
         content: {
           type: 'text',
-          text: data.description[2].split(': ')[1],
+          text: data.applicants,
           markdown: false,
         },
         accent: true,
@@ -56,7 +56,7 @@ exports.mentoringMsgGenerator = (conversationId, data) => {
         term: '멘토',
         content: {
           type: 'text',
-          text: data.description[3].split(': ')[1],
+          text: data.mento,
           markdown: false,
         },
         accent: true,
