@@ -8,7 +8,6 @@ exports.mentoring = async (req, res, next) => {
   const messages = await Promise.all([
     conversations.map((conversation) => {
       const msg = mentoringMsg.mentoringMsgGenerator(conversation.id, data);
-
       return libKakaoWork.sendMessage(msg);
     }),
   ]);
@@ -24,8 +23,6 @@ exports.mentoring = async (req, res, next) => {
   }
   res.status(200).send({ result: 'ok' });
 };
-
-exports.keyword = async (req, res, next) => {};
 
 exports.welcome = async (req, res, next) => {
   // 유저 목록 검색 (1)
@@ -54,4 +51,15 @@ exports.welcome = async (req, res, next) => {
     return;
   }
   res.status(200).send({ result: 'ok' });
+};
+
+exports.keyword = async (req, res, next) => {
+    const users = await libKakaoWork.getUserList();
+
+  // 검색된 모든 유저에게 각각 채팅방 생성 (2)
+  const conversations = await Promise.all(
+    users.map((user) => libKakaoWork.openConversations({ userId: user.id }))
+  );
+    req.conversations=conversations;
+    next();
 };
