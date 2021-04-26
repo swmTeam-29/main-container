@@ -1,5 +1,5 @@
-//data: mentor, title, 
-exports.mentroringMsgGenerator = (conversationId, data) => {
+//data: mento, subject, 
+exports.reviewRequestMsgGenerator = (conversationId, data) => {
   return {
     conversationId: conversationId,
     text: '멘토링 한줄평 권유',
@@ -16,7 +16,7 @@ exports.mentroringMsgGenerator = (conversationId, data) => {
       },
       {
         type: 'text',
-        text: '___ 멘토링 어땠나요?',
+        text: `${data.subject} 멘토링 어땠나요?`,
         markdown: false,
       },
       {
@@ -24,7 +24,7 @@ exports.mentroringMsgGenerator = (conversationId, data) => {
         text: '한줄평 쓰러가기',
         style: 'default',
         action_type: 'call_modal',
-        value: "mentoring_review_requset",
+        value: "mentoring_review_request",
       },
     ],
   };
