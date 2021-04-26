@@ -5,6 +5,20 @@ const keywordComplete = require('../msgGenerator/keywordComplete.msg');
 
 router.post('/', async (req, res, next) => {
   //res.status(200).send({ msg: "test" });
+  const type = req.body.type;
+
+  switch (type) {
+    case 'submit_action':
+      await callbackFromMsg(req, res, next);
+      break;
+
+    case 'submission' :
+      await callbackFromModal(req, res, next);
+      break;
+
+    default:
+      break;
+  }
   const {
     message,
     actions,
@@ -22,7 +36,7 @@ router.post('/', async (req, res, next) => {
       // 키워드 알림 설정 완료 시 전송 메시지
       await libKakaoWork.sendMessage(msg);
       break;
-      
+
     case 'applicantMentoring':
       mentoring.applicant(req.body);
       break;

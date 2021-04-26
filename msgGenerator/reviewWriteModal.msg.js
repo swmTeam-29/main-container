@@ -4,7 +4,7 @@ exports.reviewWriteModalGenerator = (data) => {
     title: '멘토링 한줄평 작성',
     accept: '확인',
     decline: '취소',
-    value: "mentoring_review_write",
+    value: 'mentoring_review_write',
     blocks: [
       {
         "type": "label",
