@@ -14,7 +14,8 @@
     "express": "~4.15.5",
     "forever": "^3.0.4",
     "mongoose": "^5.12.5",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "eslint": "^7.25.0",
