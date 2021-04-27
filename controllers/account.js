@@ -42,7 +42,7 @@ exports.accountSave = async (req, res, next) => {
         desc: '계정정보가 올바른지 확인해주세요',
       };
     }
-    const msg = accountSucess(data);
+    const msg = accountSucess(conversationId, data);
     await libKakaoWork.sendMessage(msg);
   });
 };
