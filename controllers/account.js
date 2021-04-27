@@ -27,7 +27,21 @@ exports.accountSave = async (req, res, next) => {
 
   request.post(options, async function (err, httpResponse, body) {
     console.log(body);
-    const data = { result: body, desc: body };
+    let data = {
+      result: 'default',
+      desc: 'default',
+    };
+    if (body.statusCode == 200) {
+      data = {
+        result: '계정등록이 성공하였습니다.',
+        desc: '해당 계정으로 멘토링을 신청됩니다.',
+      };
+    } else {
+      data = {
+        result: '계정등록이 실패하였습니다.',
+        desc: '계정정보가 올바른지 확인해주세요',
+      };
+    }
     const msg = accountSucess(data);
     await libKakaoWork.sendMessage(msg);
   });
