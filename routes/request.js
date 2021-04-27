@@ -23,20 +23,20 @@ router.post('/', async (req, res, next) => {
   switch (action_name) {
     case 'keyword_setting':
       // 웰컴 메시지의 키워드 설정 버튼 눌렀을 때 키워드 설정 모달 전송
-      const msg = keywordModal();
-      return res.json(msg);
+      const msg1 = keywordModal();
+      return res.json(msg1);
       break;
 
     case 'review_request':
       // 한줄평 권유 메세지의 "한줄평 쓰러가기" 버튼 눌렀을 때 모달 전송
-      const msg = reviewWriteModal();
+      const msg2 = reviewWriteModal();
 
       //value : {멘토이름, 멘토링제목, 모달이름}
       const temp_value_json = Object.assign(value_json, {
         modal_name: 'review_write',
       });
-      msg.value = JSON.stringify(temp_value_json);
-      return res.json(msg); //사용자에게 모달 띄움
+      msg2.value = JSON.stringify(temp_value_json);
+      return res.json(msg2); //사용자에게 모달 띄움
       break;
 
     default:

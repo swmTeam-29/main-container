@@ -82,9 +82,9 @@ const callbackFromModal = async (req, res, next) => {
     case 'keyword_setting_results':
       // 키워드와 채팅방 고유 id DB에 저장
       console.log(message.conversation_id + ': ' + actions.keyword_input);
-      const msg = keywordComplete(message, actions);
+      const msg1 = keywordComplete(message, actions);
       // 키워드 알림 설정 완료 시 전송 메시지
-      await libKakaoWork.sendMessage(msg);
+      await libKakaoWork.sendMessage(msg1);
       break;
 
     case 'applicantMentoring':
@@ -99,8 +99,9 @@ const callbackFromModal = async (req, res, next) => {
         review: actions.user_review,
       });
       //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
-      const msg = reviewSuccess(conversationId, temp_value_json);
-      await libKakaoWork.sendMessage(msg);
+      const msg2 = reviewSuccess(conversationId, temp_value_json);
+      await libKakaoWork.sendMessage(msg2);
+      break;
 
     default:
       break;
