@@ -46,7 +46,7 @@
 ### 외부 API(Aws Lamda Function)
 ------------
 1) Upload Alert
-+req.body:
+  + req.body:
 ```
 [{data}...]
 ```
