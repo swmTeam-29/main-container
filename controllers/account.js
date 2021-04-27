@@ -35,7 +35,7 @@ exports.accountSave = async (req, res, next) => {
     if (body.statusCode == 200) {
       data = {
         result: '계정등록이 성공하였습니다.',
-        desc: '해당 계정으로 멘토링을 신청됩니다.',
+        desc: '해당 계정으로 멘토링이 신청됩니다.',
       };
     } else {
       data = {
