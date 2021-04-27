@@ -11,7 +11,7 @@
  *  멘토링 한줄평 요구 메시지 블록
  */
 module.exports = (conversationId, data) => {
-  return {
+  const msg = {
     conversationId: conversationId,
     text: '멘토링 한줄평 권유',
     blocks: [
@@ -30,15 +30,21 @@ module.exports = (conversationId, data) => {
         text: `${data.subject} 멘토링 어땠나요?`,
         markdown: false,
       },
-      {
-        type: 'button',
-        text: '한줄평 쓰러가기',
-        style: 'default',
-        action_type: 'call_modal',
-        action_name: 'review_request',
-        //기존 데이터에 action_name:review_request, user_id:user_id 추가해서 보내주세요
-        value: '',
-      },
+      //button 아래에서 추가
     ],
   };
+  const botton = {
+    type: 'button',
+    text: '한줄평 쓰러가기',
+    style: 'default',
+    action_type: 'call_modal',
+    action_name: 'review_request',
+    value: '',
+  };
+  const value = Object.assign(data, {
+    action_name: 'review_request',
+  });
+  botton.value = JSON.stringify(value);
+  msg.blocks.push(button);
+  return msg;
 };

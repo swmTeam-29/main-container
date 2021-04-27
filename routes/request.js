@@ -30,6 +30,7 @@ router.post('/', async (req, res, next) => {
 
     case 'review_request': {
       // "한줄평 쓰러가기" 버튼 눌렀을 때 모달 전송
+      //value: yesterdaydata+userid+action_name
       const msg = reviewWriteModal();
       return res.json(msg); //사용자에게 모달 띄움
     }
