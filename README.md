@@ -31,15 +31,45 @@
 
 ## 아키텍처 구조
 ------------
-
+(아키텍처 구조 제작중)
 ------------
 ## API Document
 ------------
 ### 내부 API(Goorm Container)
 ------------
-
+1) Alert Message
+  + (함수 예시)
+2) Request Message
+  + (함수 예시)
+3) Callback Message
+  + (호출 예)
 ### 외부 API(Aws Lamda Function)
 ------------
+1) Upload Alert
++req.body:
+```
+[{data}...]
+```
++호출 예시
+```
+data=
+{
+    "dataType": "mentoring",
+    "id": 590,
+    "subject": "[자유멘토링]5/7(금)_18:00부터-오선식팀 멘토링",
+    "location": "온라인",
+    "link": "https://swmaestro.org/sw/mypage/mentoLec/view.do?qustnrSn=590&menuNo=200046",
+    "status": "[접수중]",
+    "period": "2021-04-25 ~ 2021-05-06",
+    "date": "2021-05-07",
+    "applicants": "1",
+    "mento": "최원서",
+    "description": "[자유멘토링]5/7(금)_18:00부터-오선식팀 멘토링"
+  }
+```
+3) Apply
+4) Cancel
+5) 
 ------------
 
 
