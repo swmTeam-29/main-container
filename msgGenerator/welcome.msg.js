@@ -19,7 +19,14 @@ exports.welcomeMsgGenerator = (conversationId) => {
         text: '키워드 알림 설정',
         style: 'default',
         action_type: 'call_modal',
-        action_name: 'keyword_setting',
+        value: '{"action_name":"keyword_setting"}',
+      },
+      {
+        type: 'button',
+        text: '멘토링 신청/취소 계정 설정',
+        style: 'default',
+        action_type: 'call_modal',
+        value: '{"action_name":"montoring_setting"}',
       },
     ],
   };

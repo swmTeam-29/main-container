@@ -2,7 +2,7 @@ const router = require('express').Router();
 const libKakaoWork = require('../libs/kakaoWork');
 const keywordModal = require('../msgGenerator/keywordModal.msg');
 const reviewWriteModal = require('../msgGenerator/reviewWriteModal.msg');
-
+const accountModal = require('../msgGenerator/accountModal.msg');
 /**
  *  @author  dongjin
  *  @brief
@@ -39,6 +39,9 @@ router.post('/', async (req, res, next) => {
       return res.json(msg2); //사용자에게 모달 띄움
       break;
 
+    case 'montoring_setting':
+      const msg3 = accountModal();
+      return res.json(msg3);
     default:
       break;
   }
