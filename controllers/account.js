@@ -4,7 +4,7 @@ exports.accountSave = async (req, res, next) => {
   const { message, actions, react_user_id } = req.body;
   const conversationId = message.conversation_id;
 
-  const userId = react_user_id;
+  const userId = String(react_user_id);
   const id = actions.input_name1;
   const password = actions.input_name2;
 

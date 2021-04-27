@@ -1,4 +1,4 @@
-exports.mentoringMsgGenerator = (conversationId, data) => {
+module.exports = (conversationId, data) => {
   return {
     conversationId: conversationId,
 

@@ -40,16 +40,6 @@ exports.welcome = async (req, res, next) => {
     })
   );
 
-  const err = [];
-  messages.forEach((element) => {
-    if (element.error) {
-      err.append({ user_id: element.message.user_id, err: element.error });
-    }
-  });
-  if (err.length !== 0) {
-    res.status(500).send({ err });
-    return;
-  }
   res.status(200).send({ result: 'ok' });
 };
 
