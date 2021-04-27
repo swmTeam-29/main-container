@@ -1,7 +1,5 @@
 const libKakaoWork = require('../libs/kakaoWork');
-const reviewAsk = require('../msgGenerator/reviewAsk.msg');
-const reviewSuccess = require('../msgGenerator/reviewSuccess.msg');
-const reviewFailed = require('../msgGenerator/reviewFailed.msg');
+const reviewAsk = require('../msgGenerator/review/reviewAsk.msg');
 
 /**
  *  @author wongi
