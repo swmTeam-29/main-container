@@ -3,7 +3,7 @@ const request = require('request');
 
 exports.applicant = (data) => {
   const { message, actions, action_time, value, react_user_id } = data;
-  const userId = react_user_id;
+  const userId = String(react_user_id);
   const link2 = message.blocks[0];
   const link = ''; //test
   const url =
