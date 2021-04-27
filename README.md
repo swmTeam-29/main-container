@@ -45,12 +45,13 @@
   + (호출 예)
 ### 외부 API(Aws Lamda Function)
 ------------
-1) Upload Alert
+1) Upload Alert(게시물 업로드 알림)
+  + 10min 마다 게시물 데이터를 읽고 새로운 데이터가 있으면 Altert Message API 호출
   + req.body:
 ```
 [{data}...]
 ```
-+호출 예시
+  + 예시
 ```
 data=
 {
@@ -67,9 +68,54 @@ data=
     "description": "[자유멘토링]5/7(금)_18:00부터-오선식팀 멘토링"
   }
 ```
-3) Apply
-4) Cancel
-5) 
+2) Apply(멘토링 신청)
+  + method : post
+  + URL : https://e79d0h6thd.execute-api.us-east-2.amazonaws.com/default/swm-applicant
+  + header
+    + Content-Type : apllication/json
+    + x-api-key:api key
+  + body
+  + req 예시
+```
+{
+
+"link":"https://swmaestro.org/sw/mypage/mentoLec/view.do?qustnrSn=585&menuNo=200046",
+
+"userId":"1234444",
+
+"type" :"applicant"
+
+}
+```
+  + res 예시
+```
+{
+
+"link":"https://swmaestro.org/sw/mypage/mentoLec/view.do?qustnrSn=585&menuNo=200046",
+
+"userId":"1234444",
+
+"type" :"applicant"
+
+}
+```
+
+```
+{
+    "statusCode": 400,
+    "body": "wrong type" //type 틀렸을때
+}
+{
+    "statusCode": 400,
+    "body": "계정정보가 존재하지 않습니다" //db에 계정정보 없을 때
+}
+{
+    "statusCode": 500,
+    "body": "{'message':'신청을 실패했습니다','number':-1'}" //홈페이지에 버튼없어서 실패
+}
+```
+4) Cancel(멘토링 취소)
+5) Review(멘토링 후기)
 ------------
 
 
