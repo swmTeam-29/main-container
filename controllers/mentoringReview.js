@@ -83,3 +83,41 @@ exports.insertUserReview = (data) => {
 
 
 
+/**
+ *  @author wongi
+ *  @brief
+ *      해당 멘토님의 모든 평가를 DB에서 찾음
+ *  @param  mento
+ *      멘토이름
+ *  @returns { review, score } reviews
+ *      리뷰, 평점 배열로 반환
+ *  @date   2021-04-28
+ */
+exports.getReviews = (mento) =>{
+    // var reviewObjs = db.findByMento( mento );
+    
+    // var reviews = []
+    // reviewObjs.forEach( function(reviewObj){
+    //     reviews.push( { 
+    //         review: reviewObjs.review, 
+    //         score: reviewObjs.score
+    //      } );
+    // });
+
+    var reviews = [
+        {
+            review:"테스트 리뷰1",
+            score:4
+        },
+        {
+            review:"테스트 리뷰2 테스트 리뷰2 테스트 리뷰2 테스트 리뷰2",
+            score:2
+        },
+        {
+            review:"테스트 리뷰3 테스트 리뷰3 테스트 리뷰3 테스트 리뷰3 테스트 리뷰3 테스트 리뷰3 테스트 리뷰3",
+            score:5
+        }
+    ];
+
+    return reviews;
+}
