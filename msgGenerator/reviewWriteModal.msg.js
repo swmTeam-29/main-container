@@ -7,22 +7,24 @@
  */
 module.exports = () => {
   return {
-    title: '멘토링 한줄평 작성',
-    accept: '한줄평 남기기',
-    decline: '취소',
-    value: '',
-    blocks: [
-      {
-        type: 'label',
-        text: '*한줄평*',
-        markdown: true,
-      },
-      {
-        type: 'input',
-        name: 'user_review',
-        required: true,
-        placeholder: '평가해 주세요',
-      },
-    ],
+    view: {
+      title: '멘토링 한줄평 작성',
+      accept: '한줄평 남기기',
+      decline: '취소',
+      value: '{"modal_name": "review_write"}',
+      blocks: [
+        {
+          type: 'label',
+          text: '*한줄평*',
+          markdown: true,
+        },
+        {
+          type: 'input',
+          name: 'user_review',
+          required: true,
+          placeholder: '평가해 주세요',
+        },
+      ],
+    },
   };
 };
