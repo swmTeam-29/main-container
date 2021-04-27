@@ -2,6 +2,7 @@ const router = require('express').Router();
 const libKakaoWork = require('../libs/kakaoWork');
 const keywordModal = require('../msgGenerator/keywordModal.msg');
 const reviewWriteModal = require('../msgGenerator/review/reviewWriteModal.msg');
+const reviewSearchModal = require('../msgGenerator/review/reviewSearchModal.msg');
 const accountModal = require('../msgGenerator/accountModal.msg');
 /**
  *  @author  dongjin
@@ -35,7 +36,7 @@ router.post('/', async (req, res, next) => {
 
     case 'review_search': {
       // "멘토링 한줄평 검색" 버튼 눌렀을 때 모달 전송
-      const msg = reviewWriteModal();
+      const msg = reviewSearchModal();
       return res.json(msg); //사용자에게 모달 띄움
     }
 

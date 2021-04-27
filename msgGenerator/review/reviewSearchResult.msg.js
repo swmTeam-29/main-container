@@ -1,46 +1,42 @@
+const reviewResultBlock = require('./reviewResultBlock.msg');
+
 /**
  * @author seonno
  * @brief
- *  사용자가 요청한 멘토님의 한줄평을 출력
+ *  사용자가 요청한 멘토님의 한줄평을 모두 출력
  * @param conversationId
  *  채팅방 식별자
- * @param {mento, subject, review} data
- *  멘토이름, 멘토링 제목, 사용자의 리뷰
+ * @param mento
+ *  멘토이름
+ * @param reviews
+ *  사용자의 리뷰 배열
  * @returns
- *  멘토링 한줄평 등록 성공메세지
+ *  멘토님의 한줄평 모두와 새로운 검색버튼
  */
-module.exports = (conversationId, data) => {
-  return {
+module.exports = (conversationId, mento, reviews) => {
+  const msg = {
     conversationId: conversationId,
     text: '멘토링 한줄평 등록 완료',
     blocks: [
       {
         type: 'header',
-        text: '멘토링 한줄평 등록 완료',
+        text: `${mento} 멘토님에 대한 한줄평`,
         style: 'blue',
-      },
-      {
-        type: 'text',
-        text: `*${data.mentor}* 멘토님의`,
-        markdown: true,
-      },
-      {
-        type: 'text',
-        text: `${data.subject} 멘토링에 대한`,
-        markdown: false,
-      },
-      {
-        type: 'text',
-        text: `${data.review} 한줄평이 등록되었습니다`,
-        style: 'default',
-      },
-      {
-        type: 'button',
-        text: '멘토링 한줄평 검색',
-        action_name: 'review_search',
-        value: '{"action_name": "review_search"}',
-        style: 'default',
       },
     ],
   };
+
+  //한줄평 블록 하나씩 삽입
+  reviews.foreach((review) => {
+    msg.blocks.push(reviewResultBlock(review));
+  });
+
+  msg.blocks.push({
+    type: 'button',
+    text: '멘토링 한줄평 검색',
+    action_name: 'review_search',
+    value: '{"action_name": "review_search"}',
+    style: 'default',
+  });
+  return msg;
 };

@@ -3,6 +3,7 @@ const libKakaoWork = require('../libs/kakaoWork');
 const mentoring = require('../controllers/mentoring');
 const keywordComplete = require('../msgGenerator/keywordComplete.msg');
 const reviewSuccess = require('../msgGenerator/review/reviewSuccess.msg');
+const reviewSearchResult = require('../msgGenerator/review/reviewSearchResult.msg');
 const account = require('../controllers/account');
 /**
  *  @author  dongjin
@@ -100,7 +101,11 @@ const callbackFromModal = async (req, res, next) => {
     }
 
     case 'review_write': {
+      //한줄평을 db에 저장하고, 저장성공/실패 메세지 보냄
+
+      //value: yesterdaydata+userid+action_name ->data, 한줄평까지 추가
       //멘토이름, 멘토링제목, 한줄평 DB에 저장 (원기님)
+      //await insertUserReview({data,한줄평});
       //이하 동기적 실행
       const conversationId = message.conversation_id;
       const temp_value_json = Object.assign(value_json, {
@@ -108,6 +113,19 @@ const callbackFromModal = async (req, res, next) => {
       });
       //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
       const msg = reviewSuccess(conversationId, temp_value_json);
+      await libKakaoWork.sendMessage(msg);
+      break;
+    }
+
+    case 'review_search': {
+      //이하 동기적 실행
+      const conversationId = message.conversation_id;
+      const mento = actions.mento;
+      //멘토님 성함에 맞는 한줄평들 DB에서 가져오기 (원기님)
+      //reviews(string타입배열) = await getReviews(mento);
+
+      //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
+      //const msg = reviewSearchResult(conversationId, mento, reviews);
       await libKakaoWork.sendMessage(msg);
       break;
     }

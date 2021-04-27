@@ -33,6 +33,7 @@ exports.welcomeMsgGenerator = (conversationId) => {
         text: '멘토링 한줄평 검색',
         action_type: 'call_modal',
         action_name: 'review_search',
+        value: '{"action_name":"review_search"}',
         style: 'default',
       },
     ],

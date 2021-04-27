@@ -11,7 +11,7 @@ module.exports = () => {
       title: '한줄평 검색',
       accept: '검색',
       decline: '취소',
-      value: '',
+      value: '{"modal_name": "review_search"}',
       blocks: [
         {
           type: 'label',

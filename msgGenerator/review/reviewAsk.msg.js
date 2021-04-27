@@ -5,8 +5,8 @@
  *  멘토링 한줄평을 요구하는 메세지를 반환함.
  * @param conversationId
  *  채팅방 식별자
- * @param {mento, subject} data
- *  멘토이름, 멘토링 제목
+ * @param data
+ *  멘토링 수강자알림 body.yesterdayMentoring.data에 userId 추가한 오브젝트
  * @return
  *  멘토링 한줄평 요구 메시지 블록
  */
@@ -36,7 +36,8 @@ module.exports = (conversationId, data) => {
         style: 'default',
         action_type: 'call_modal',
         action_name: 'review_request',
-        value: `{"action_name":"review_request", "mento":"${data.mento}", "subject":"${data.subject}"}`,
+        //기존 데이터에 action_name:review_request, user_id:user_id 추가해서 보내주세요
+        value: '',
       },
     ],
   };
