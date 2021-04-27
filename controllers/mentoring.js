@@ -5,7 +5,7 @@ exports.applicant = (data) => {
   const { message, actions, action_time, value, react_user_id } = data;
   const userId = String(react_user_id);
   const link2 = message.blocks[0];
-  const link = ''; //test
+  const link = value;
   const url =
     'https://e79d0h6thd.execute-api.us-east-2.amazonaws.com/default/swm-applicant';
 
