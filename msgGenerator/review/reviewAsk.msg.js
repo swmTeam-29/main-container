@@ -36,7 +36,7 @@ module.exports = (conversationId, data) => {
         style: 'default',
         action_type: 'call_modal',
         action_name: 'review_request',
-        value: `{"mento":"${data.mento}", "subject":"${data.subject}"}`,
+        value: `{"action_name":"review_request", "mento":"${data.mento}", "subject":"${data.subject}"}`,
       },
     ],
   };

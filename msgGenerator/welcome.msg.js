@@ -28,6 +28,13 @@ exports.welcomeMsgGenerator = (conversationId) => {
         action_type: 'call_modal',
         value: '{"action_name":"montoring_setting"}',
       },
+      {
+        type: 'button',
+        text: '멘토링 한줄평 검색',
+        action_type: 'call_modal',
+        action_name: 'review_search',
+        style: 'default',
+      },
     ],
   };
 };

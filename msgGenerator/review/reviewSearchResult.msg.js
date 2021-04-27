@@ -1,8 +1,7 @@
 /**
  * @author seonno
  * @brief
- *  사용자가 멘토링 한줄평을 성공적으로 남긴 경우
- *  사용자측에 보내는 성공메세지
+ *  사용자가 요청한 멘토님의 한줄평을 출력
  * @param conversationId
  *  채팅방 식별자
  * @param {mento, subject, review} data
@@ -33,6 +32,13 @@ module.exports = (conversationId, data) => {
       {
         type: 'text',
         text: `${data.review} 한줄평이 등록되었습니다`,
+        style: 'default',
+      },
+      {
+        type: 'button',
+        text: '멘토링 한줄평 검색',
+        action_name: 'review_search',
+        value: '{"action_name": "review_search"}',
         style: 'default',
       },
     ],
