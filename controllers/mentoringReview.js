@@ -52,43 +52,34 @@ exports.sendReviewMessage = async (req, res, next) => {
 /**
  *  @author wongi
  *  @brief
- *    작성된 멘토링 review를 DB에 저장
- *  @details
- *    작성된 멘토링 review를 DB에 저장
+ *      작성된 멘토링 review를 DB에 저장
+ *  @param {mentoringId, mento, userId, review, score} data
+ *      멘토링 식별번호, 멘토이름, 멘티 이름, 멘티 리뷰, 평점
+ *  @returns
+ *      멘토링 등록 성공, 실패 여부 (boolean)
  *  @date   2021-04-28
  */
-exports.writeReview = async (req, res, next) => {
-    const reqData = req.body;
-
-    var reviewObj = { mentoringId: reqData.mentoringId, 
-                     mento: reqData.mento,
-                     userId: reqData.userId,
-                     review: reqData.review,
-                     score: reqData.score
+exports.insertUserReview = (data) => {
+    var reviewObj = { mentoringId: data.mentoringId, 
+                     mento: data.mento,
+                     userId: data.userId,
+                     review: data.review,
+                     score: data.score
                     };
 
     // DB에 이미 존재 -> 이미 리뷰한 멘토링에 대해 다시 리뷰한경우 
     // if( db.exists( reviewObj ) ){
-    //     return reviewFailed();
-    //     res.status(409).send({ result: 'insert fail' });
+    //     return false;
     // }
     
     
     // database에 성공적으로 insert 되었다면 성공메세지
     //if( db.insert( reviewObj ) ){
-        const userConversation = await libKakaoWork.openConversations( {userId: reqData.userId} );
-
-        const data = Object.assign({}, reviewObj);
-        Object.assign( data,  { subject: reqData.subject } );
-
-        const msg = reviewSuccess(userConversation.id , data);
-        libKakaoWork.sendMessage(msg);
+        return true;
     // }else{
-    //     return reviewFailed();
-    //     res.status(409).send({ result: 'insert fail' });
+    //     return false;
     // }
-
-    res.status(200).send({ result: 'ok' });
 };
+
 
 
