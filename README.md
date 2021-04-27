@@ -73,7 +73,7 @@ data=
   + URL : https://e79d0h6thd.execute-api.us-east-2.amazonaws.com/default/swm-applicant
   + header
     + Content-Type : apllication/json
-    + x-api-key:api key
+    + x-api-key : api key
   + body
   + req 예시
 ```
