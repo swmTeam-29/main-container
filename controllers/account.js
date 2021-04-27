@@ -1,6 +1,6 @@
 const request = require('request');
 const accountSucess = require('../msgGenerator/accountSucess.msg');
-exports.accountSave = (req, res, next) => {
+exports.accountSave = async (req, res, next) => {
   const { message, actions, react_user_id } = req.body;
   const conversationId = message.conversation_id;
 
@@ -25,7 +25,7 @@ exports.accountSave = (req, res, next) => {
     json: true, //json으로 보낼경우 true로 해주어야 header값이 json으로 설정됩니다.
   };
 
-  request.post(options, function (err, httpResponse, body) {
+  request.post(options, async function (err, httpResponse, body) {
     console.log(body);
     const data = { result: body, desc: body };
     const msg = accountSucess(data);
