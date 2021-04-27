@@ -110,7 +110,27 @@ data=
 }
 ```
 4) Cancel(멘토링 취소)
-5) Review(멘토링 후기)
+  + method : post
+  + URL : https://e79d0h6thd.execute-api.us-east-2.amazonaws.com/default/swm-applicant
+  + header
+    + x-api-key : api key
+  + body 
+    + link : 신청할 멘토링 게시글의 URL
+    + userid : 카카오워크 id
+    + type : 신청 or 취소
+    + req 예시
+```
+{
+
+"link":"https://swmaestro.org/sw/mypage/mentoLec/view.do?qustnrSn=585&menuNo=200046",
+
+"userId":"1234444",
+
+"type" :"cancle"
+
+}
+```
+6) Review(멘토링 후기)
 ------------
 
 
