@@ -3,7 +3,7 @@ const libKakaoWork = require('../libs/kakaoWork');
 const mentoring = require('../controllers/mentoring');
 const keywordComplete = require('../msgGenerator/keywordComplete.msg');
 const reviewSuccess = require('../msgGenerator/reviewSuccess.msg');
-
+const account = require('../controllers/account');
 /**
  *  @author  dongjin
  *  @brief
@@ -103,6 +103,9 @@ const callbackFromModal = async (req, res, next) => {
       await libKakaoWork.sendMessage(msg2);
       break;
 
+    case 'account_write':
+      account.accountSave(req, res, next);
+      break;
     default:
       break;
   }
