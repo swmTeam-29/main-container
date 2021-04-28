@@ -27,6 +27,39 @@ module.exports = (value) => {
           required: true,
           placeholder: '평가해 주세요',
         },
+        {
+          type: 'label',
+          text: '별점',
+          markdown: true,
+        },
+        {
+          type: 'select',
+          name: 'user_score',
+          options: [
+            {
+              text: '⭐⭐⭐⭐⭐',
+              value: '5',
+            },
+            {
+              text: '⭐⭐⭐⭐',
+              value: '4',
+            },
+            {
+              text: '⭐⭐⭐',
+              value: '3',
+            },
+            {
+              text: '⭐⭐',
+              value: '2',
+            },
+            {
+              text: '⭐',
+              value: '1',
+            },
+          ],
+          required: true,
+          placeholder: '별점을 선택해주세요',
+        },
       ],
     },
   };

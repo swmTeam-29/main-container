@@ -111,7 +111,7 @@ const callbackFromModal = async (req, res, next) => {
       const conversationId = message.conversation_id;
       const temp_value_json = Object.assign(value_json, {
         review: actions.user_review,
-        score: 3,
+        score: actions.user_score,
       });
       await review.insertUserReview(temp_value_json);
       //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
