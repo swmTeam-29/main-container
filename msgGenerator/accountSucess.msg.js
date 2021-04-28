@@ -15,6 +15,9 @@ module.exports = (conversationId, data) => {
         markdown: true,
       },
       {
+        type: 'divider'
+      },
+      {
         type: 'button',
         text: '다른 계정 등록하기',
         style: 'default',
