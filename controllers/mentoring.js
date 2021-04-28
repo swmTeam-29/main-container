@@ -40,7 +40,7 @@ exports.applicant = (data) => {
           style: 'danger',
           action_type: 'submit_action',
           action_name: 'cancleMentoring',
-          value: `{"link":"${data.link}","subject":"${data.subject}"}`,
+          value: `{"link":"${link}","subject":"${subject}"}`,
         },
         result: '멘토링이 신청되었습니다',
         desc: `${subject} 멘토링에 ${body.body.number}번째로 신청하셨습니다`,
