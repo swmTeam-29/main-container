@@ -13,18 +13,29 @@ mongoose.connect(
   }
 );
 
-exports.insertUserReview = (data) => {
-  const newReview = new Review();
-  newReview.mentoringId = data.mentoringId;
-  newReview.mento = data.mento;
-  newReview.userId = data.userId;
-  newReview.review = data.review;
-  newReview.score = data.score;
-  //newReview.save().then((review) => {
-  //  res.json({
-  //    data: newReview,
-  //  });
-  //});
+exports.insertUserReview = async (data) => {
+    // Validation
+    const oldReview = await Review.where({
+        'mentoringId' : data.mentoringId,
+        'userId' : data.userId
+    });
+
+    console.log(oldReview);
+
+    if (Object.keys(oldReview).length !== 0) {
+        console.log('review already exists');
+        return -1;
+    }
+
+    const newReview = new Review();
+    newReview.mentoringId = data.mentoringId;
+    newReview.mento = data.mento;
+    newReview.userId = data.userId;
+    newReview.review = data.review;
+    newReview.score = data.score;
+    const result = await newReview.save();
+    
+    return 1;
 };
 
 exports.getReviews = async (mento_name) => {
