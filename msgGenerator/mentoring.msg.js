@@ -43,7 +43,7 @@ exports.mentoringMsgGenerator = (conversationId, data) => {
       },
       {
         type: 'description',
-        term: '신청인원',
+        term: '현재인원',
         content: {
           type: 'text',
           text: data.applicants,
@@ -60,6 +60,11 @@ exports.mentoringMsgGenerator = (conversationId, data) => {
           markdown: false,
         },
         accent: true,
+      },
+      {
+        type: 'text',
+        text: data.description,
+        markdown: true,
       },
       {
         type: 'button',
