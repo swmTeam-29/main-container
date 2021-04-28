@@ -113,7 +113,7 @@ const callbackFromModal = async (req, res, next) => {
         review: actions.user_review,
         score: 3,
       });
-      review.insertUserReview(temp_value_json);
+      await review.insertUserReview(temp_value_json);
       //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
       const msg = reviewSuccess(conversationId, temp_value_json);
       await libKakaoWork.sendMessage(msg);
@@ -125,7 +125,7 @@ const callbackFromModal = async (req, res, next) => {
       const conversationId = message.conversation_id;
       const mento = actions.mento;
       //멘토님 성함에 맞는 한줄평들 DB에서 가져오기 (원기님)
-      const reviews = await mentoringReview.getReviews(mento);
+      const reviews = await review.getReviews(mento);
 
       //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
       const msg = reviewSearchResult(conversationId, mento, reviews);
