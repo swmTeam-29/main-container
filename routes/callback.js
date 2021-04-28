@@ -84,6 +84,8 @@ const callbackFromMsg = async (req, res, next) => {
 const callbackFromModal = async (req, res, next) => {
   const { action_time, actions, message, react_user_id, value } = req.body;
 
+  const modal_name = JSON.parse(value).modal_name;
+
   switch (modal_name) {
     case 'keyword_setting_results': {
       // 키워드와 채팅방 고유 id DB에 저장
