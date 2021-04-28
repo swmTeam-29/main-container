@@ -6,6 +6,7 @@
  *  멘토링 한줄평 작성 및 제출 모달
  */
 module.exports = (value) => {
+  //value: yesterdaydata+userid+action_name
   value = Object.assign(value, {
     modal_name: 'review_write',
   });

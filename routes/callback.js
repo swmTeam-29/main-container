@@ -1,13 +1,12 @@
 const router = require('express').Router();
 const libKakaoWork = require('../libs/kakaoWork');
+
 const mentoring = require('../controllers/mentoring');
-const keywordComplete = require('../msgGenerator/keywordComplete.msg');
-const reviewSuccess = require('../msgGenerator/review/reviewSuccess.msg');
-const reviewFailed = require('../msgGenerator/review/reviewFailed.msg');
-const reviewSearchResult = require('../msgGenerator/review/reviewSearchResult.msg');
-const mentoringReview = require('../controllers/mentoringReview');
 const account = require('../controllers/account');
 const review = require('../controllers/review');
+
+const keywordComplete = require('../msgGenerator/keywordComplete.msg');
+
 /**
  *  @author  dongjin
  *  @brief
@@ -85,9 +84,6 @@ const callbackFromMsg = async (req, res, next) => {
 const callbackFromModal = async (req, res, next) => {
   const { action_time, actions, message, react_user_id, value } = req.body;
 
-  const value_json = JSON.parse(value);
-  const modal_name = value_json.modal_name;
-
   switch (modal_name) {
     case 'keyword_setting_results': {
       // 키워드와 채팅방 고유 id DB에 저장
@@ -105,37 +101,13 @@ const callbackFromModal = async (req, res, next) => {
 
     case 'review_write': {
       //한줄평을 db에 저장하고, 저장성공/실패 메세지 보냄
-
-      //value: yesterdaydata+userid+action_name ->data, 한줄평까지 추가
-      //멘토이름, 멘토링제목, 한줄평 DB에 저장 (원기님)
-      //이하 동기적 실행
-      const conversationId = message.conversation_id;
-      const temp_value_json = Object.assign(value_json, {
-        review: actions.user_review,
-        score: actions.user_score,
-      });
-      const err = await review.insertUserReview(temp_value_json);
-      if (err != -1) {
-        const msg = reviewFailed(conversationId, temp_value_json, err);
-        await libKakaoWork.sendMessage(msg);
-      } else {
-        //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
-        const msg = reviewSuccess(conversationId, temp_value_json);
-        await libKakaoWork.sendMessage(msg);
-      }
+      review.sendReviewEnrollResult(req, res);
       break;
     }
 
     case 'review_search': {
-      //이하 동기적 실행
-      const conversationId = message.conversation_id;
-      const mento = actions.mento;
-      //멘토님 성함에 맞는 한줄평들 DB에서 가져오기 (원기님)
-      const reviews = await review.getReviews(mento);
-
-      //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
-      const msg = reviewSearchResult(conversationId, mento, reviews);
-      await libKakaoWork.sendMessage(msg);
+      //사용자가 정한 멘토님에 대한 모든 한줄평을 db에서 가져와서 메세지로 보낸다.
+      review.sendMentorReviews(req, res);
       break;
     }
 

@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const mentoringReview = require('../controllers/mentoringReview');
+const review = require('../controllers/review');
 
-router.post('/sendReviewMessage', mentoringReview.sendReviewMessage);
+router.post('/sendReviewMessage', review.sendReviewMessage);
 
 module.exports = router;
