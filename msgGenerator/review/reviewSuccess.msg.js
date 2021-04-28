@@ -35,6 +35,14 @@ module.exports = (conversationId, data) => {
         text: `${data.review} 한줄평이 등록되었습니다`,
         style: 'default',
       },
+      {
+        type: 'button',
+        text: '멘토링 한줄평 검색',
+        action_type: 'call_modal',
+        action_name: 'review_search',
+        value: '{"action_name":"review_search"}',
+        style: 'default',
+      },
     ],
   };
 };
