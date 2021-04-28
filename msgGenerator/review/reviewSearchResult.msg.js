@@ -29,8 +29,8 @@ module.exports = (conversationId, mento, reviews) => {
   //한줄평 블록 하나씩 삽입
   reviews.forEach((item) => {
     msg.blocks.push(reviewResultBlock.divider());
-    msg.blocks.push(reviewResultBlock.score());
-    msg.blocks.push(reviewResultBlock.message());
+    msg.blocks.push(reviewResultBlock.score(item.score));
+    msg.blocks.push(reviewResultBlock.message(item.review));
   });
 
   msg.blocks.push({
