@@ -30,17 +30,20 @@ exports.sendReviewEnrollResult = async (req, res) => {
 
   const err = await mongodbController.insertUserReview(temp_value_json);
   switch (err) {
-    case 1:
+    case 1: {
       //db등록 성공
       const msg = reviewSuccess(conversationId, temp_value_json);
+      await libKakaoWork.sendMessage(msg);
       break;
+    }
 
-    default:
+    default: {
       //db 등록 실패
       const msg = reviewFailed(conversationId, temp_value_json, err);
+      await libKakaoWork.sendMessage(msg);
       break;
+    }
   }
-  await libKakaoWork.sendMessage(msg);
 };
 
 /**
