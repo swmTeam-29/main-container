@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const libKakaoWork = require('../libs/kakaoWork');
 const keywordModal = require('../msgGenerator/keywordModal.msg');
-const reviewWriteModal = require('../msgGenerator/reviewWriteModal.msg');
+const reviewWriteModal = require('../msgGenerator/review/reviewWriteModal.msg');
+const reviewSearchModal = require('../msgGenerator/review/reviewSearchModal.msg');
 const accountModal = require('../msgGenerator/accountModal.msg');
 /**
  *  @author  dongjin
@@ -21,27 +22,30 @@ router.post('/', async (req, res, next) => {
   const action_name = value_json.action_name;
 
   switch (action_name) {
-    case 'keyword_setting':
+    case 'keyword_setting': {
       // 웰컴 메시지의 키워드 설정 버튼 눌렀을 때 키워드 설정 모달 전송
-      const msg1 = keywordModal();
-      return res.json(msg1);
-      break;
+      const msg = keywordModal();
+      return res.json(msg);
+    }
 
-    case 'review_request':
-      // 한줄평 권유 메세지의 "한줄평 쓰러가기" 버튼 눌렀을 때 모달 전송
-      const msg2 = reviewWriteModal();
+    case 'review_request': {
+      // "한줄평 쓰러가기" 버튼 눌렀을 때 모달 전송
+      //value: yesterdaydata+userid+action_name
+      const msg = reviewWriteModal();
+      return res.json(msg); //사용자에게 모달 띄움
+    }
 
-      //value : {멘토이름, 멘토링제목, 모달이름}
-      const temp_value_json = Object.assign(value_json, {
-        modal_name: 'review_write',
-      });
-      msg2.value = JSON.stringify(temp_value_json);
-      return res.json(msg2); //사용자에게 모달 띄움
-      break;
+    case 'review_search': {
+      // "멘토링 한줄평 검색" 버튼 눌렀을 때 모달 전송
+      const msg = reviewSearchModal();
+      return res.json(msg); //사용자에게 모달 띄움
+    }
 
-    case 'montoring_setting':
-      const msg3 = accountModal();
-      return res.json(msg3);
+    case 'montoring_setting': {
+      const msg = accountModal();
+      return res.json(msg);
+    }
+
     default:
       break;
   }
