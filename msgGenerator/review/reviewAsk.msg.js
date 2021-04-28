@@ -33,7 +33,7 @@ module.exports = (conversationId, data) => {
       //button 아래에서 추가
     ],
   };
-  const botton = {
+  const button = {
     type: 'button',
     text: '한줄평 쓰러가기',
     style: 'default',

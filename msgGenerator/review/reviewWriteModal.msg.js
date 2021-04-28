@@ -5,13 +5,16 @@
  * @returns
  *  멘토링 한줄평 작성 및 제출 모달
  */
-module.exports = () => {
+module.exports = (value) => {
+  value = Object.assign(value, {
+    modal_name: 'review_write',
+  });
   return {
     view: {
       title: '멘토링 한줄평 작성',
       accept: '한줄평 남기기',
       decline: '취소',
-      value: '{"modal_name": "review_write"}',
+      value: JSON.stringify(value),
       blocks: [
         {
           type: 'label',
