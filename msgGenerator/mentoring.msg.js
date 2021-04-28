@@ -62,9 +62,15 @@ exports.mentoringMsgGenerator = (conversationId, data) => {
         accent: true,
       },
       {
+        type: 'divider',
+      },
+      {
         type: 'text',
-        text: data.description,
-        markdown: true,
+        text: data.description.substring(0, 450) + '(중략)...',
+        markdown: false,
+      },
+      {
+        type: 'divider',
       },
       {
         type: 'button',
