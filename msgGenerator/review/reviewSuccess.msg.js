@@ -32,7 +32,7 @@ module.exports = (conversationId, data) => {
       },
       {
         type: 'text',
-        text: `*"${data.review}"* 한줄평이 등록되었습니다`,
+        text: `"${data.review}" 한줄평이 등록되었습니다`,
         markdown: false,
       },
       {

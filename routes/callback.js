@@ -3,6 +3,7 @@ const libKakaoWork = require('../libs/kakaoWork');
 const mentoring = require('../controllers/mentoring');
 const keywordComplete = require('../msgGenerator/keywordComplete.msg');
 const reviewSuccess = require('../msgGenerator/review/reviewSuccess.msg');
+const reviewFailed = require('../msgGenerator/review/reviewFailed.msg');
 const reviewSearchResult = require('../msgGenerator/review/reviewSearchResult.msg');
 const mentoringReview = require('../controllers/mentoringReview');
 const account = require('../controllers/account');
@@ -113,10 +114,15 @@ const callbackFromModal = async (req, res, next) => {
         review: actions.user_review,
         score: actions.user_score,
       });
-      await review.insertUserReview(temp_value_json);
-      //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
-      const msg = reviewSuccess(conversationId, temp_value_json);
-      await libKakaoWork.sendMessage(msg);
+      const err = await review.insertUserReview(temp_value_json);
+      if (err != -1) {
+        const msg = reviewFailed(conversationId, temp_value_json, err);
+        await libKakaoWork.sendMessage(msg);
+      } else {
+        //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
+        const msg = reviewSuccess(conversationId, temp_value_json);
+        await libKakaoWork.sendMessage(msg);
+      }
       break;
     }
 
