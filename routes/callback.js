@@ -4,6 +4,7 @@ const mentoring = require('../controllers/mentoring');
 const keywordComplete = require('../msgGenerator/keywordComplete.msg');
 const reviewSuccess = require('../msgGenerator/reviewSuccess.msg');
 const account = require('../controllers/account');
+const review = require('../controllers/review');
 /**
  *  @author  dongjin
  *  @brief
@@ -93,6 +94,7 @@ const callbackFromModal = async (req, res, next) => {
 
     case 'review_write':
       //멘토이름, 멘토링제목, 한줄평 DB에 저장 (원기님)
+      review.insertUserReview(req.body);
       //이하 동기적 실행
       const conversationId = message.conversation_id;
       const temp_value_json = Object.assign(value_json, {
