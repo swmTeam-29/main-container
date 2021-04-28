@@ -20,11 +20,11 @@ exports.insertUserReview = (data) => {
   newReview.userId = data.userId;
   newReview.review = data.review;
   newReview.score = data.score;
-  newReview.save().then((review) => {
-    res.json({
-      data: newReview,
-    });
-  });
+  //newReview.save().then((review) => {
+  //  res.json({
+  //    data: newReview,
+  //  });
+  //});
 };
 
 exports.getReviews = async (mento_name) => {
