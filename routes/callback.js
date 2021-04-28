@@ -107,12 +107,13 @@ const callbackFromModal = async (req, res, next) => {
 
       //value: yesterdaydata+userid+action_name ->data, 한줄평까지 추가
       //멘토이름, 멘토링제목, 한줄평 DB에 저장 (원기님)
-      review.insertUserReview(req.body);
       //이하 동기적 실행
       const conversationId = message.conversation_id;
       const temp_value_json = Object.assign(value_json, {
         review: actions.user_review,
+        score: 3,
       });
+      await review.insertUserReview(temp_value_json);
       //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
       const msg = reviewSuccess(conversationId, temp_value_json);
       await libKakaoWork.sendMessage(msg);
@@ -124,7 +125,7 @@ const callbackFromModal = async (req, res, next) => {
       const conversationId = message.conversation_id;
       const mento = actions.mento;
       //멘토님 성함에 맞는 한줄평들 DB에서 가져오기 (원기님)
-      const reviews = await mentoringReview.getReviews(mento);
+      const reviews = await review.getReviews(mento);
 
       //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
       const msg = reviewSearchResult(conversationId, mento, reviews);

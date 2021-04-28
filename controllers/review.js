@@ -1,14 +1,17 @@
 const mongoose = require('mongoose');
 const Review = require('../models/review');
 
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true}, (err)=>{
+mongoose.connect(
+  process.env.MONGODB_URL,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  (err) => {
     if (err) {
-        console.log(err);
+      console.log(err);
+    } else {
+      console.log('Connected to database successfully');
     }
-    else {
-        console.log('Connected to database successfully');
-    }
-});
+  }
+);
 
 exports.insertUserReview = async (data) => {
     // Validation
@@ -35,6 +38,6 @@ exports.insertUserReview = async (data) => {
     return 1;
 };
 
-exports.getReviews = async (data) => {
-    return await Review.where('mento', data.mento);
+exports.getReviews = async (mento_name) => {
+  return await Review.where('mento', mento_name);
 };
