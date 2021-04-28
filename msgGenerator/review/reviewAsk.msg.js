@@ -5,13 +5,13 @@
  *  멘토링 한줄평을 요구하는 메세지를 반환함.
  * @param conversationId
  *  채팅방 식별자
- * @param {mento, subject} data
- *  멘토이름, 멘토링 제목
+ * @param data
+ *  멘토링 수강자알림 body.yesterdayMentoring.data에 userId 추가한 오브젝트
  * @return
  *  멘토링 한줄평 요구 메시지 블록
  */
 module.exports = (conversationId, data) => {
-  return {
+  const msg = {
     conversationId: conversationId,
     text: '멘토링 한줄평 권유',
     blocks: [
@@ -30,14 +30,21 @@ module.exports = (conversationId, data) => {
         text: `${data.subject} 멘토링 어땠나요?`,
         markdown: false,
       },
-      {
-        type: 'button',
-        text: '한줄평 쓰러가기',
-        style: 'default',
-        action_type: 'call_modal',
-        action_name: 'review_request',
-        value: `{"mento":"${data.mento}", "subject":"${data.subject}"}`,
-      },
+      //button 아래에서 추가
     ],
   };
+  const botton = {
+    type: 'button',
+    text: '한줄평 쓰러가기',
+    style: 'default',
+    action_type: 'call_modal',
+    action_name: 'review_request',
+    value: '',
+  };
+  const value = Object.assign(data, {
+    action_name: 'review_request',
+  });
+  botton.value = JSON.stringify(value);
+  msg.blocks.push(button);
+  return msg;
 };
