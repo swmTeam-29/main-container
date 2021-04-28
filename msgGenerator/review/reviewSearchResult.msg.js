@@ -27,13 +27,16 @@ module.exports = (conversationId, mento, reviews) => {
   };
 
   //한줄평 블록 하나씩 삽입
-  reviews.foreach((review) => {
-    msg.blocks.push(reviewResultBlock(review));
+  reviews.forEach((item) => {
+    msg.blocks.push(reviewResultBlock.divider());
+    msg.blocks.push(reviewResultBlock.score());
+    msg.blocks.push(reviewResultBlock.message());
   });
 
   msg.blocks.push({
     type: 'button',
     text: '멘토링 한줄평 검색',
+    action_type: 'call_modal',
     action_name: 'review_search',
     value: '{"action_name": "review_search"}',
     style: 'default',
