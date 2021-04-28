@@ -6,7 +6,7 @@
 
 
 ![first](./first.png)
-![second](./second.png)
+![second](./second.jpg)
 
 
 
