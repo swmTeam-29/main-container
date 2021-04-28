@@ -5,8 +5,7 @@
 ## 프로젝트 기획 이유
 
 
-![first](./first.png)
-![second](./second.jpg)
+![third](./third.png)
 
 
 
