@@ -6,7 +6,9 @@ exports.applicant = (data) => {
   const { message, actions, action_time, value, react_user_id } = data;
   const userId = String(react_user_id);
   const conversationId = message.conversation_id;
-  const link = value;
+  const value_json = JSON.parse(value);
+  const link = value_json.link;
+  const subject = value_json.subject;
   const url =
     'https://e79d0h6thd.execute-api.us-east-2.amazonaws.com/default/swm-applicant';
 
@@ -38,10 +40,10 @@ exports.applicant = (data) => {
           style: 'danger',
           action_type: 'submit_action',
           action_name: 'cancleMentoring',
-          value: link,
+          value: `{"link":"${data.link}","subject":"${data.subject}"}`,
         },
         result: '멘토링이 신청되었습니다',
-        desc: `해당 멘토링에 ${body.number}번째로 신청하셨습니다`,
+        desc: `${subject} 멘토링에 ${body.body.number}번째로 신청하셨습니다`,
       };
     } else if (body.statusCode === 400) {
       data = {
@@ -53,7 +55,7 @@ exports.applicant = (data) => {
           value: '{"action_name":"montoring_setting"}',
         },
         result: '멘토링 신청에 실패하였습니다',
-        desc: '계정정보를 등록했는지 확인해주세요',
+        desc: `해당 멘토링: ${subject}, 계정정보를 등록했는지 확인해주세요`,
       };
     } else if (body.statusCode === 500) {
       data = {
@@ -65,7 +67,7 @@ exports.applicant = (data) => {
           value: link,
         },
         result: '멘토링 신청에 실패하였습니다',
-        desc: '이미 신청하신 멘토링인지 확인해주세요',
+        desc: `${subject} (이)가 이미 신청하신 멘토링인지 확인해주세요`,
       };
     }
     await libKakaoWork.sendMessage(applicantSucessMsg(conversationId, data));
@@ -76,7 +78,9 @@ exports.cancel = (data) => {
   const { message, actions, action_time, value, react_user_id } = data;
   const userId = String(react_user_id);
   const conversationId = message.conversation_id;
-  const link = value;
+  const value_json = JSON.parse(value);
+  const link = value_json.link;
+  const subject = value_json.subject;
   const url =
     'https://e79d0h6thd.execute-api.us-east-2.amazonaws.com/default/swm-applicant';
 
@@ -107,10 +111,10 @@ exports.cancel = (data) => {
           style: 'primary',
           action_type: 'submit_action',
           action_name: 'applicantMentoring',
-          value: link,
+          value: `{"link":"${data.link}","subject":"${data.subject}"}`,
         },
         result: '멘토링이 취소되었습니다',
-        desc: `해당 멘토링 신청이 취소되었습니다`,
+        desc: `${subject} 멘토링 신청이 취소되었습니다`,
       };
     } else if (body.statusCode === 400) {
       data = {
@@ -122,7 +126,7 @@ exports.cancel = (data) => {
           value: '{"action_name":"montoring_setting"}',
         },
         result: '멘토링 취소에 실패하였습니다',
-        desc: '계정정보를 등록했는지 확인해주세요',
+        desc: `해당 멘토링: ${subject}, 계정정보를 등록했는지 확인해주세요`,
       };
     } else if (body.statusCode === 500) {
       data = {
@@ -134,8 +138,7 @@ exports.cancel = (data) => {
           value: link,
         },
         result: '멘토링 신청에 실패하였습니다',
-        desc:
-          '신청취소 버튼이 신청자 리스트 1페이지에 없을 시 취소할 수 없습니다.',
+        desc: `해당 멘토링: ${subject}, 신청취소 버튼이 신청자 리스트 1페이지에 없을 시 취소할 수 없습니다.`,
       };
     }
     await libKakaoWork.sendMessage(applicantSucessMsg(conversationId, data));

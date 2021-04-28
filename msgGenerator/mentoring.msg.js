@@ -67,7 +67,7 @@ exports.mentoringMsgGenerator = (conversationId, data) => {
         style: 'primary',
         action_type: 'submit_action',
         action_name: 'applicantMentoring',
-        value: data.link,
+        value: `{"link":"${data.link}","subject":"${data.subject}"}`,
       },
     ],
   };
