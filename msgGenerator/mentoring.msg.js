@@ -5,7 +5,7 @@ exports.mentoringMsgGenerator = (conversationId, data) => {
     blocks: [
       {
         type: 'header',
-        text: '멘토링이 등록되었습니다.',
+        text: '새로운 멘토링이 당신을 기다려요!',
         style: 'blue',
       },
       {
@@ -63,7 +63,7 @@ exports.mentoringMsgGenerator = (conversationId, data) => {
       },
       {
         type: 'button',
-        text: '신청하기',
+        text: '이건 못 참지 바로 신청해',
         style: 'primary',
         action_type: 'submit_action',
         action_name: 'applicantMentoring',
