@@ -44,7 +44,7 @@ module.exports = (conversationId, data) => {
   const value = Object.assign(data, {
     action_name: 'review_request',
   });
-  botton.value = JSON.stringify(value);
+  button.value = JSON.stringify(value);
   msg.blocks.push(button);
   return msg;
 };
