@@ -65,7 +65,7 @@ const callbackFromMsg = async (req, res, next) => {
       break;
     }
 
-    case 'cancelMentoring': {
+    case 'cancleMentoring': {
       mentoring.cancel(req.body);
       break;
     }
