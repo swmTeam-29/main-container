@@ -14,6 +14,7 @@ exports.welcomeMsgGenerator = (conversationId) => {
           </br>아래 키워드 알림 설정을 통해 원하는 키워드의 멘토링 알림만 받을 수 있습니다.`,
         markdown: true,
       },
+      /*
       {
         type: 'button',
         text: '키워드 알림 설정',
@@ -21,6 +22,7 @@ exports.welcomeMsgGenerator = (conversationId) => {
         action_type: 'call_modal',
         value: '{"action_name":"keyword_setting"}',
       },
+      */
       {
         type: 'button',
         text: '멘토링 신청/취소 계정 설정',
