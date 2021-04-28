@@ -16,7 +16,7 @@ module.exports = (conversationId, data) => {
       },
       {
         type: 'button',
-        text: 'button',
+        text: '다시 등록하기',
         style: 'default',
         action_type: 'call_modal',
         value: '{"action_name":"montoring_setting"}',
