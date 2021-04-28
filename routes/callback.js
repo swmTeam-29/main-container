@@ -4,6 +4,7 @@ const mentoring = require('../controllers/mentoring');
 const keywordComplete = require('../msgGenerator/keywordComplete.msg');
 const reviewSuccess = require('../msgGenerator/review/reviewSuccess.msg');
 const reviewSearchResult = require('../msgGenerator/review/reviewSearchResult.msg');
+const mentoringReview = require('../controllers/mentoringReview');
 const account = require('../controllers/account');
 /**
  *  @author  dongjin
@@ -122,10 +123,10 @@ const callbackFromModal = async (req, res, next) => {
       const conversationId = message.conversation_id;
       const mento = actions.mento;
       //멘토님 성함에 맞는 한줄평들 DB에서 가져오기 (원기님)
-      //reviews(string타입배열) = await getReviews(mento);
+      const reviews = await mentoringReview.getReviews(mento);
 
       //멘토이름, 멘토링제목, 한줄평과 함께 한줄평 등록 성공메세지 보내기
-      //const msg = reviewSearchResult(conversationId, mento, reviews);
+      const msg = reviewSearchResult(conversationId, mento, reviews);
       await libKakaoWork.sendMessage(msg);
       break;
     }
