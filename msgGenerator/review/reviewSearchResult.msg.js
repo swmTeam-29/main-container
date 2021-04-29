@@ -16,7 +16,7 @@ const reviewResultBlock = require('./reviewResultBlock.msg');
 module.exports = (conversationId, mento, reviews) => {
   const msg = {
     conversationId: conversationId,
-    text: '멘토링 한줄평 등록 완료',
+    text: '멘토링 한줄평 검색 결과',
     blocks: [
       {
         type: 'header',
