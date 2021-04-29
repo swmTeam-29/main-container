@@ -83,7 +83,7 @@
 https://forms.gle/6NiahMw3tf8WfK2i7
 
 ## API문서
-[깃허브 위키] https://github.com/swmTeam-29/main-container/wiki
+[깃허브 위키 바로가기](https://github.com/swmTeam-29/main-container/wiki)
 
-[노션 페이지] https://www.notion.so/team-2-5f94d97c35d94bf39a4cad509ca02c02
+[노션 페이지 ](https://www.notion.so/team-2-5f94d97c35d94bf39a4cad509ca02c02)
 
