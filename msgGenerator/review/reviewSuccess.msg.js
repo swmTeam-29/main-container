@@ -22,7 +22,7 @@ module.exports = (conversationId, data) => {
       },
       {
         type: 'text',
-        text: `*${data.mentor}* 멘토님의`,
+        text: `*${data.mento}* 멘토님의`,
         markdown: true,
       },
       {
@@ -32,8 +32,8 @@ module.exports = (conversationId, data) => {
       },
       {
         type: 'text',
-        text: `${data.review} 한줄평이 등록되었습니다`,
-        style: 'default',
+        text: `"${data.review}" 한줄평이 등록되었습니다`,
+        markdown: false,
       },
       {
         type: 'button',
