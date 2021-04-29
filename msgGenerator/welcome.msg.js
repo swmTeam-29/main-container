@@ -5,32 +5,31 @@ exports.welcomeMsgGenerator = (conversationId) => {
     blocks: [
       {
         type: 'header',
-        text: '@@봇',
+        text: '애기 멘티 베이비시터봇',
         style: 'blue',
       },
       {
         type: 'text',
-        text: `안녕하세요! team[-2]에서 개발한 @@봇입니다.
-          </br>아래 키워드 알림 설정을 통해 원하는 키워드의 멘토링 알림만 받을 수 있습니다.`,
+        text: '도움이 필요한 애기 멘티가 있다는 소식에 내가 등장! 무슨 도움이 필요하니?',
         markdown: true,
       },
       {
         type: 'button',
-        text: '키워드 알림 설정',
+        text: '멘토링 키워드 알림 설정',
         style: 'default',
         action_type: 'call_modal',
         value: '{"action_name":"keyword_setting"}',
       },
       {
         type: 'button',
-        text: '멘토링 신청/취소 계정 설정',
+        text: 'SWM 홈페이지 계정 등록',
         style: 'default',
         action_type: 'call_modal',
         value: '{"action_name":"montoring_setting"}',
       },
       {
         type: 'button',
-        text: '멘토링 한줄평 검색',
+        text: '멘토링 한줄평 확인하기',
         action_type: 'call_modal',
         action_name: 'review_search',
         value: '{"action_name":"review_search"}',
