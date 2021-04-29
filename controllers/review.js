@@ -19,7 +19,7 @@ exports.sendReviewEnrollResult = async (req, res) => {
   const { action_time, actions, message, react_user_id, value } = req.body;
 
   //welcome메세지에서 온 경우
-  if (typeof actions.mento == 'undefined') {
+  if (typeof actions.mento !== 'undefined') {
     //value: yesterdaydata+userid+action_name
     //value에 한줄평, 별점 추가해서 db에 등록
     const conversationId = message.conversation_id;
@@ -49,6 +49,7 @@ exports.sendReviewEnrollResult = async (req, res) => {
         break;
       }
     }
+    return;
   }
 
   //value: yesterdaydata+userid+action_name
