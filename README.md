@@ -32,7 +32,7 @@
 ![arc](./arc.png)
 ------------
 ## 디렉터리 구조
-![direc](./direc.png)
+![direc](./direc.PNG)
 
 
 ## 팀원 목록
