@@ -2,7 +2,7 @@
 ## 프로젝트 소개
 <p align="center">
 <img src = "./logo.png" width="40%"><br>
-실시간으로 올라오는 멘토링과 각 멘토링이 어떨지 고민되는 <span style="color: blue;"><strong>소마인</strong></span> 을 위해서 멘토링 신청/취소와 멘토링 한줄평 기능을 제공하는 <strong>챗봇 애기 멘티 소마!</strong>
+실시간으로 올라오는 멘토링과 각 멘토링이 어떨지 고민되는 <span style="color: blue;"><strong>소마인</strong></span> 을 위해서<br> 멘토링 신청/취소와 멘토링 한줄평 기능을 제공하는 <strong>챗봇 애기 멘티 소마!</strong>
 </p>
 
 ## 프로젝트 기획 동기 
