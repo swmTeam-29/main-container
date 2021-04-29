@@ -6,8 +6,9 @@
 </p>
 
 ## 프로젝트 기획 동기 
-
-![usebrain](./motivation.png)
+<p align="center">
+<img src = "./motivation.png" width="40%">
+</p>
 
 ## 연수생 인터뷰
 ![third](./third.png)
