@@ -30,7 +30,7 @@ exports.insertUserReview = async (data) => {
 
   if (Object.keys(oldReview).length !== 0) {
     //console.log('review already exists');
-    return -1;
+    //return -1;
   }
 
   const newReview = new Review();

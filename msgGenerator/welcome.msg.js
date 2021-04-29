@@ -9,33 +9,36 @@ exports.welcomeMsgGenerator = (conversationId) => {
         style: 'blue',
       },
       {
-        "type": "text",
-        "text": "안녕하세요 *team[-2]* 입니다. \n이 봇은 다음 기능을 제공합니다.",
-        "markdown": true
+        type: 'text',
+        text: '안녕하세요 *team[-2]* 입니다. \n이 봇은 다음 기능을 제공합니다.',
+        markdown: true,
       },
       {
-        "type": "divider"
+        type: 'divider',
       },
       {
-        "type": "text",
-        "text": "1. 새로운 멘토링이 등록되면 알림\n신청하기 버튼으로 간단한 신청 가능",
-        "markdown": true
+        type: 'text',
+        text:
+          '1. 새로운 멘토링이 등록되면 알림\n신청하기 버튼으로 간단한 신청 가능',
+        markdown: true,
       },
       {
-        "type": "image_link",
-        "url": "https://user-images.githubusercontent.com/48829883/116539761-3f3fe180-a924-11eb-99a2-a8b0e660dbe5.PNG"
+        type: 'image_link',
+        url:
+          'https://user-images.githubusercontent.com/48829883/116539761-3f3fe180-a924-11eb-99a2-a8b0e660dbe5.PNG',
       },
       {
-        "type": "divider"
+        type: 'divider',
       },
       {
-        "type": "text",
-        "text": "2. 멘토님들의 한줄평 등록 및 검색",
-        "markdown": true
+        type: 'text',
+        text: '2. 멘토님들의 한줄평 등록 및 검색',
+        markdown: true,
       },
       {
-        "type": "image_link",
-        "url": "https://user-images.githubusercontent.com/48829883/116539761-3f3fe180-a924-11eb-99a2-a8b0e660dbe5.PNG"
+        type: 'image_link',
+        url:
+          'https://user-images.githubusercontent.com/48829883/116539761-3f3fe180-a924-11eb-99a2-a8b0e660dbe5.PNG',
       },
       /*
       {
@@ -59,6 +62,13 @@ exports.welcomeMsgGenerator = (conversationId) => {
         action_type: 'call_modal',
         action_name: 'review_search',
         value: '{"action_name":"review_search"}',
+        style: 'default',
+      },
+      {
+        type: 'button',
+        text: '멘토링 한줄평 쓰러가기',
+        action_type: 'call_modal',
+        action_name: 'review_request_by_welcome',
         style: 'default',
       },
     ],
