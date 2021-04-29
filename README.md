@@ -5,8 +5,7 @@
 ## 프로젝트 기획 이유
 
 
-![third](./third.png)
-![usebrain](./usebrain.png)
+![third](./third.png)![usebrain](./usebrain.png)
 
 
 
