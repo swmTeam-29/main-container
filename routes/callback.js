@@ -112,6 +112,12 @@ const callbackFromModal = async (req, res, next) => {
       break;
     }
 
+    case 'review_write_by_welcome': {
+      //한줄평을 db에 저장하고, 저장성공/실패 메세지 보냄
+      review.sendReviewEnrollResult(req, res);
+      break;
+    }
+
     case 'review_search': {
       //사용자가 정한 멘토님에 대한 모든 한줄평을 db에서 가져와서 메세지로 보낸다.
       review.sendMentorReviews(req, res);

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const keywordModal = require('../msgGenerator/keywordModal.msg');
 const reviewWriteModal = require('../msgGenerator/review/reviewWriteModal.msg');
+const reviewWriteByWelcomeModal = require('../msgGenerator/review/reviewWriteByWelcomeModal.msg');
 const reviewSearchModal = require('../msgGenerator/review/reviewSearchModal.msg');
 const accountModal = require('../msgGenerator/accountModal.msg');
 
@@ -31,6 +32,12 @@ router.post('/', async (req, res, next) => {
     case 'review_request': {
       // "한줄평 쓰러가기" 버튼 눌렀을 때 모달 전송
       const msg = reviewWriteModal(value_json);
+      return res.json(msg);
+    }
+
+    case 'review_request_by_welcome': {
+      // 웰컴메세지에서 "한줄평 쓰러가기" 버튼 눌렀을 때 모달 전송
+      const msg = reviewWriteByWelcomeModal(value_json);
       return res.json(msg);
     }
 

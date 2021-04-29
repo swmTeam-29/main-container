@@ -18,6 +18,40 @@ exports.sendReviewEnrollResult = async (req, res) => {
   //유저가 모달에서 submit한 경우 callback
   const { action_time, actions, message, react_user_id, value } = req.body;
 
+  //welcome메세지에서 온 경우
+  if (typeof actions.mento !== 'undefined') {
+    //value: yesterdaydata+userid+action_name
+    //value에 한줄평, 별점 추가해서 db에 등록
+    const conversationId = message.conversation_id;
+
+    const value_json = JSON.parse(value);
+    const temp_value_json = Object.assign(value_json, {
+      mento: actions.mento,
+      review: actions.user_review,
+      score: actions.user_score,
+      mentoringId: 10000,
+      userId: 10000,
+    });
+
+    const err = await mongodbController.insertUserReview(temp_value_json);
+    switch (err) {
+      case 1: {
+        //db등록 성공
+        const msg = reviewSuccess(conversationId, temp_value_json);
+        await libKakaoWork.sendMessage(msg);
+        break;
+      }
+
+      default: {
+        //db 등록 실패
+        const msg = reviewFailed(conversationId, temp_value_json, err);
+        await libKakaoWork.sendMessage(msg);
+        break;
+      }
+    }
+    return;
+  }
+
   //value: yesterdaydata+userid+action_name
   //value에 한줄평, 별점 추가해서 db에 등록
   const conversationId = message.conversation_id;

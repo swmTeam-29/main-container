@@ -7,8 +7,18 @@ const kakaoInstance = axios.create({
 });
 
 exports.getUserList = async () => {
-  const res = await kakaoInstance.get('/v1/users.list');
-  return res.data.users;
+  let res = await kakaoInstance.get('/v1/users.list?limit=100');
+  const users = res.data.users;
+  while(true){
+    let cursor = res.data.cursor;
+    if(typeof cursor == "undefined" || cursor == null || cursor == ""){
+      break;
+    }
+    res = await kakaoInstance.get(`/v1/users.list?cursor=${res.data.cursor}`);
+    res.data.users.forEach(user=>{users.push(user);});
+  }
+  
+  return users;
 };
 
 exports.openConversations = async ({ userId }) => {
