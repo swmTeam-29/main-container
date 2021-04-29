@@ -83,7 +83,7 @@
 
 
 ## Team[-2] 구성원
-임동진, 이원기, 이선노, 함초롬, 김호준, 유한길
+[임동진](https://github.com/djlim98), [이원기](https://github.com/Leewongi0731), [이선노](https://github.com/lsn1106), [함초롬](https://github.com/chorom-ham), [김호준](https://github.com/JuniKim77), [유한길](https://github.com/Yuhangil)
 
 ## 건의 사항 및 버그 리포팅 하러 가기
 https://forms.gle/6NiahMw3tf8WfK2i7
@@ -91,5 +91,5 @@ https://forms.gle/6NiahMw3tf8WfK2i7
 ## API문서
 [깃허브 위키 바로가기](https://github.com/swmTeam-29/main-container/wiki)
 
-[노션 페이지 ](https://www.notion.so/team-2-5f94d97c35d94bf39a4cad509ca02c02)
+[노션 페이지](https://www.notion.so/team-2-5f94d97c35d94bf39a4cad509ca02c02)
 
