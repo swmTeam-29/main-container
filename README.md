@@ -1,28 +1,25 @@
-# team[-2] 응애 나 애기 멘티
+# Team[-2] - SW마에스트로 미니프로젝트 29팀 
+## 멘토링 신청/취소와 멘토링 한줄평을 제공하는 **챗봇 애기 멘티 소마**
+![usebrain](./logo.png)
+## 프로젝트 기획 동기 
 
+![usebrain](./motivation.png)
 
-
-## 프로젝트 기획 이유
-
-
+### 연수생 인터뷰
 ![third](./third.png)
-![usebrain](./usebrain.png)
 
 
 
 ## 주요기능 설명
-1) 멘토링 키워드 알림
-  + 키워드를 등록해두고, 이와 관련된 멘토링이 개설되면 멘토링 정보와 신청 버튼이 포함된 메시지 발송
-  + 키워드 등록은 메시지의 모달로 전달
-  (직접 구동한 사진)
-2) 멘토링 신청 및 취소
+
+1) 멘토링 신청 및 취소
   + 소프트웨어 마에스트로 ID & PW를 등록하고 1)의 기능으로 전달된 멘토링을 신청후 결과를 메시지로 발송
   + 이 기능을 통해 신청한 멘토링을 다시 취소하는 것 역시 가능
   + 계정 정보는 user_id로 매핑하여 연계된 DB에 저장됨
   + (멘토링을 신청하고 실제로 신청된 사진)
-3) 멘토링 일정 관리
+2) 멘토링 일정 관리
   + 신청한 멘토링은 연계된 DB에 저장되며 이를 기반으로 일정 표시
-4) 멘토링 후기 및 한줄평
+3) 멘토링 후기 및 한줄평
   + 멘토링별 수강자 목록을 스크래핑하여 멘토링 한줄평 요청 메시지 발송
   + 모달을 통해 DB에 업로드하여 저장
   + 위 내용을 기반으로 멘토와 멘토링에 대한 한줄평 열람 가능
@@ -32,7 +29,47 @@
 ![arc](./arc.png)
 ------------
 ## 디렉터리 구조
-![direc](./direc.PNG)
+```
+├── README.md
+├── app.js
+├── controllers
+│   ├── account.js
+│   ├── mentoring.js
+│   ├── mongodb.js
+│   ├── notification.js
+│   └── review.js
+├── libs
+│   └── kakaoWork
+│       └── index.js
+├── models
+│   └── review.js
+├── msgGenerator
+│   ├── accountModal.msg.js
+│   ├── accountSucess.msg.js
+│   ├── applicantSucess.msg.js
+│   ├── keywordComplete.msg.js
+│   ├── keywordModal.msg.js
+│   ├── mentoring.msg.js
+│   ├── review
+│   │   ├── reviewAsk.msg.js
+│   │   ├── reviewFailed.msg.js
+│   │   ├── reviewResultBlock.msg.js
+│   │   ├── reviewSearchModal.msg.js
+│   │   ├── reviewSearchResult.msg.js
+│   │   ├── reviewSuccess.msg.js
+│   │   └── reviewWriteModal.msg.js
+│   └── welcome.msg.js
+├── package-lock.json
+├── package.json
+└──  routes
+    ├── alert.js
+    ├── callback.js
+    ├── db.js
+    ├── index.js
+    ├── request.js
+    └── review.js
+
+```
 
 
 ## 팀원 목록
