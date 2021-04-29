@@ -111,7 +111,7 @@ exports.cancel = (data) => {
           style: 'primary',
           action_type: 'submit_action',
           action_name: 'applicantMentoring',
-          value: `{"link":"${data.link}","subject":"${data.subject}"}`,
+          value: `{"link":"${link}","subject":"${subject}"}`,
         },
         result: '멘토링이 취소되었습니다',
         desc: `${subject} 멘토링 신청이 취소되었습니다`,
