@@ -1,51 +1,33 @@
 exports.welcomeMsgGenerator = (conversationId) => {
   return {
     conversationId: conversationId,
-    text: 'Welcome message',
+    text: '멘토링 신청을 도와주는 애기멘티소마를 이용해보세요!',
     blocks: [
       {
         type: 'header',
-        text: '애기 멘티 소마 BOT',
+        text: '29팀 Team[-2]',
         style: 'blue',
       },
       {
-        "type": "text",
-        "text": "안녕하세요 *team[-2]* 입니다. \n이 봇은 다음 기능을 제공합니다.",
-        "markdown": true
+        type: 'text',
+        text:
+          '안녕하세요 👋 \n\n멘토링 신청의 모든 것을 도와주는 *애기멘티소마*입니다 \n\n듣고 싶던 멘토링을 놓치지 않도록 제가 알림을 보내드릴께요! \n\n소마 홈페이지 계정 정보를 등록해서 마감되기 전에 빠르고 간편하게 신청해보세요 👍 \n\n실수로 신청했다면 바로 취소하실 수도 있습니다 😁\n\n또한 등록된 멘토링이 어떨지 궁굼하시다면 제가 해당 멘토님의 멘토링 한줄평을 조회도 해드릴께요 🔍',
+        markdown: true,
       },
       {
-        "type": "divider"
+        type: 'context',
+        content: {
+          type: 'text',
+          text:
+            '[개인정보수집이용동의서](https://docs.google.com/document/d/1My0Iq5N73GQMFbF27Iu01YCkvZhSwJvbWknfPnRUILk/edit?usp=sharing)',
+          markdown: true,
+        },
+        image: {
+          type: 'image_link',
+          url:
+            'https://t1.kakaocdn.net/kakaowork/resources/block-kit/context/doc@3x.png',
+        },
       },
-      {
-        "type": "text",
-        "text": "1. 새로운 멘토링이 등록되면 알림\n신청하기 버튼으로 간단한 신청 가능",
-        "markdown": true
-      },
-      {
-        "type": "image_link",
-        "url": "https://user-images.githubusercontent.com/48829883/116539761-3f3fe180-a924-11eb-99a2-a8b0e660dbe5.PNG"
-      },
-      {
-        "type": "divider"
-      },
-      {
-        "type": "text",
-        "text": "2. 멘토님들의 한줄평 등록 및 검색",
-        "markdown": true
-      },
-      {
-        "type": "image_link",
-        "url": "https://user-images.githubusercontent.com/48829883/116539761-3f3fe180-a924-11eb-99a2-a8b0e660dbe5.PNG"
-      },
-      /*
-      {
-        type: 'button',
-        text: '멘토링 키워드 알림 설정',
-        style: 'default',
-        action_type: 'call_modal',
-        value: '{"action_name":"keyword_setting"}',
-      },
-      */
       {
         type: 'button',
         text: 'SWM 홈페이지 계정 등록',
