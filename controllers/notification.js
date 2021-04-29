@@ -11,16 +11,6 @@ exports.mentoring = async (req, res, next) => {
       return libKakaoWork.sendMessage(msg);
     })
   );
-  const err = [];
-  messages.forEach((element) => {
-    if (element.error) {
-      err.append({ user_id: element.message.user_id, err: element.error });
-    }
-  });
-  if (err) {
-    res.status(500).send({ err });
-    return;
-  }
   res.status(200).send({ result: 'ok' });
 };
 
