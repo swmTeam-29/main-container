@@ -1,6 +1,7 @@
 # Team[-2] - SW마에스트로 미니프로젝트 29팀 
 ## 멘토링 신청/취소와 멘토링 한줄평을 제공하는 **챗봇 애기 멘티 소마**
-![usebrain](./logo.png)
+<img src = "./logo.png" width="40%" >
+
 ## 프로젝트 기획 동기 
 
 ![usebrain](./motivation.png)
