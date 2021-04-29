@@ -77,11 +77,13 @@
 
 
 ## Team[-2] 구성원
-> 임동진, 이원기, 이선노, 함초롬, 김호준, 유한길
+임동진, 이원기, 이선노, 함초롬, 김호준, 유한길
 
 ## 건의 사항 및 버그 리포팅 하러 가기
 https://forms.gle/6NiahMw3tf8WfK2i7
 
 ## API문서
-https://www.notion.so/team-2-5f94d97c35d94bf39a4cad509ca02c02
+[깃허브 위키] https://github.com/swmTeam-29/main-container/wiki
+
+[노션 페이지] https://www.notion.so/team-2-5f94d97c35d94bf39a4cad509ca02c02
 
