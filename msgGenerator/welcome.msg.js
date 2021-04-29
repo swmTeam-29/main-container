@@ -69,7 +69,7 @@ exports.welcomeMsgGenerator = (conversationId) => {
         text: '멘토링 한줄평 쓰러가기',
         action_type: 'call_modal',
         action_name: 'review_request_by_welcome',
-        value: '{"action_name":"review_search_by_welcome"}',
+        value: '{"action_name":"review_request_by_welcome"}',
         style: 'default',
       },
     ],

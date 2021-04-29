@@ -29,6 +29,8 @@ exports.sendReviewEnrollResult = async (req, res) => {
       mento: actions.mento,
       review: actions.user_review,
       score: actions.user_score,
+      mentoringId: 10000,
+      userId: 10000,
     });
 
     const err = await mongodbController.insertUserReview(temp_value_json);
