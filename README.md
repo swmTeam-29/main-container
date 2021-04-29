@@ -1,10 +1,9 @@
 # Team[-2] - SW마에스트로 미니프로젝트 29팀 
 ## 프로젝트 소개
 <p align="center">
-<img src = "./logo.png" width="40%">
+<img src = "./logo.png" width="40%"><br>
+멘토링 신청/취소와 멘토링 한줄평을 제공하는 <strong>챗봇 애기 멘티 소마</strong>
 </p>
-<center>멘토링 신청/취소와 멘토링 한줄평을 제공하는 <strong>챗봇 애기 멘티 소마</strong></center>
-
 ## 프로젝트 기획 동기 
 
 ![usebrain](./motivation.png)
