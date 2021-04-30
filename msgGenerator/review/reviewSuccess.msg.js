@@ -22,7 +22,7 @@ module.exports = (conversationId, data) => {
       },
       {
         type: 'text',
-        text: `*${data.mento}* 멘토님의`,
+        text: `*${data.mento}* 멘토님`,
         markdown: true,
       },
     ],
