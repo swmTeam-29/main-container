@@ -17,7 +17,7 @@ module.exports = (conversationId, data) => {
     blocks: [
       {
         type: 'header',
-        text: '오늘 참여했던 멘토링 어땠나요?',
+        text: '어제 참여했던 멘토링 어땠나요?',
         style: 'blue',
       },
       {
