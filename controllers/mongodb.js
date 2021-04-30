@@ -21,7 +21,7 @@ mongoose.connect(
  */
 exports.insertUserReview = async (data) => {
   //mentoringId 가 10000인 경우 멘토링에 대한 평가가 아닌 멘토에 대한 평가. 제한없이 추가가능.
-  if (mentoringId != 10000) {
+  if (data.mentoringId != 10000) {
     // Validation
     const oldReview = await Review.where({
       mentoringId: data.mentoringId,
