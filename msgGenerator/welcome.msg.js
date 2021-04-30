@@ -1,7 +1,7 @@
 exports.welcomeMsgGenerator = (conversationId) => {
   return {
     conversationId: conversationId,
-    text: '멘토링 신청을 도와주는 애기멘티소마를 이용해보세요!',
+    text: '멘토링 신청을 도와주는 Team[-2]의 애기멘티소마를 이용해보세요!',
     blocks: [
       {
         type: 'header',
