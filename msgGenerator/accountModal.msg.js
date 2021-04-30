@@ -35,7 +35,7 @@ module.exports = () => {
         },
         {
           type: 'label',
-          text: 'welcome 메시지에 개인정보수집동의서를 확인해주세요',
+          text: 'Welcome 메시지에서 개인정보수집동의서를 확인해주세요',
           markdown: true,
         },
         {
