@@ -11,7 +11,7 @@
  *  멘토링 한줄평 등록 성공메세지
  */
 module.exports = (conversationId, data) => {
-  return {
+  const msg = {
     conversationId: conversationId,
     text: '멘토링 한줄평 등록 완료',
     blocks: [
@@ -25,24 +25,31 @@ module.exports = (conversationId, data) => {
         text: `*${data.mento}* 멘토님의`,
         markdown: true,
       },
-      {
-        type: 'text',
-        text: `${data.subject} 멘토링에 대한`,
-        markdown: false,
-      },
-      {
-        type: 'text',
-        text: `"${data.review}" 한줄평이 등록되었습니다`,
-        markdown: false,
-      },
-      {
-        type: 'button',
-        text: '멘토링 한줄평 검색',
-        action_type: 'call_modal',
-        action_name: 'review_search',
-        value: '{"action_name":"review_search"}',
-        style: 'default',
-      },
     ],
   };
+  if (
+    typeof data.subject !== 'undefined' &&
+    data.subject !== null &&
+    data.subject !== ''
+  ) {
+    msg.blocks.push({
+      type: 'text',
+      text: `${data.subject} 멘토링에 대한`,
+      markdown: false,
+    });
+  }
+  msg.blocks.push({
+    type: 'text',
+    text: `"${data.review}" 한줄평이 등록되었습니다`,
+    markdown: false,
+  });
+  msg.blocks.push({
+    type: 'button',
+    text: '멘토링 한줄평 검색',
+    action_type: 'call_modal',
+    action_name: 'review_search',
+    value: '{"action_name":"review_search"}',
+    style: 'default',
+  });
+  return msg;
 };
