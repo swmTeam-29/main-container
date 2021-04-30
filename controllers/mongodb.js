@@ -20,17 +20,20 @@ mongoose.connect(
  *  @author hojun
  */
 exports.insertUserReview = async (data) => {
-  // Validation
-  const oldReview = await Review.where({
-    mentoringId: data.mentoringId,
-    userId: data.userId,
-  });
+  //mentoringId 가 10000인 경우 멘토링에 대한 평가가 아닌 멘토에 대한 평가. 제한없이 추가가능.
+  if (data.mentoringId != 10000) {
+    // Validation
+    const oldReview = await Review.where({
+      mentoringId: data.mentoringId,
+      userId: data.userId,
+    });
 
-  //console.log(oldReview);
+    //console.log(oldReview);
 
-  if (Object.keys(oldReview).length !== 0) {
-    //console.log('review already exists');
-    //return -1;
+    if (Object.keys(oldReview).length !== 0) {
+      //console.log('review already exists');
+      return -1;
+    }
   }
 
   const newReview = new Review();
